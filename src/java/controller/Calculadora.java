@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Historic;
+import util.CalculatorException;
 
 /**
  * Página de controle da Calculadora
@@ -72,6 +75,7 @@ public class Calculadora extends HttpServlet {
             String mathText = request.getParameter("mathText");
 
             Fraction result = this._getResultFromMathTeX(mathText, response);
+            
             String simplificado = result.getSimplifiedResult().getPrettyMathResult();
             String resultado = result.getPrettyMathResult() ;
             if ( simplificado.equals(resultado) ) {
@@ -79,22 +83,24 @@ public class Calculadora extends HttpServlet {
             }
         
             /**
-             * Se a fração é válida, logo não há avisos de erros
-             * Então persisti-la-emos na base de dados
+             * Neste ponto, vamos persistir os dados em banco
              */
-            if ( result.getWarnings().isEmpty() ) {
-                historicoDAO dao = new historicoDAO();
-                dao.inserir(new Historic(result));
-            }
+            historicoDAO dao = new historicoDAO();
+            dao.inserir(new Historic(result));
         
             request.setAttribute("resultado", resultado);
             request.setAttribute("resultadoSimplificado", simplificado);
             request.setAttribute("resultadoDecimal", result.getDecimalResult());
             request.setAttribute("expressao", result.getMathExpression());
-            request.setAttribute("avisos", result.getWarnings());
+            request.setAttribute("avisos", null);
             request.setAttribute("tipos", result.getTypes());
-        } 
-        finally {
+        }catch( CalculatorException ex ){
+            List<String> avisos = new ArrayList<String>();
+            avisos.add(ex.getMessage());
+            request.setAttribute("avisos", avisos);
+        } catch (Exception ex) {
+            Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
             request.getRequestDispatcher("calculadora.jsp").forward(request, response);
         }
     }
@@ -106,7 +112,7 @@ public class Calculadora extends HttpServlet {
      * 
      * @return Fraction
      */
-    private Fraction _getResultFromMathTeX( String mathText , HttpServletResponse response  ){
+    private Fraction _getResultFromMathTeX( String mathText , HttpServletResponse response  ) throws Exception, CalculatorException{
         String[] fracs = mathText.split("\\+|-|×|÷");
         List<String> operators = new ArrayList<String>();
         

@@ -6,12 +6,13 @@ package model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import util.CalculatorException;
 
 /**
  *
  * @author Grupo GRA (Anne, Gilmar e Ricardo) <aiec.br>
  */
-public class Fraction {
+public final class Fraction {
     
     /**
      * Enum para gerir as constantes para os operadores para cálculo das partes
@@ -71,11 +72,6 @@ public class Fraction {
     private Fraction result ;
     
     /**
-     * Recebe a lista de avisos em caso de erro ou informação
-     */
-    private ArrayList<String> warnings = new ArrayList<String>();
-    
-    /**
      * Recebe a lista de tipos de classificação da fração
      */
     private ArrayList<String> types = new ArrayList<String>();
@@ -100,10 +96,12 @@ public class Fraction {
      * 
      * @param numerador
      * @param denominador 
+     * 
+     * @throws util.CalculatorException 
      */
-    public Fraction(Integer numerador, Integer denominador){
-        this.numerador = numerador;
-        this.denominador = denominador;
+    public Fraction(Integer numerador, Integer denominador) throws CalculatorException{
+        this.setNumerador(numerador);
+        this.setDenominador(denominador);
     }
     
     /**
@@ -112,11 +110,12 @@ public class Fraction {
      * @param numerador
      * @param denominador 
      * @param operacao 
+     * @throws util.CalculatorException 
      */
-    public Fraction(Integer numerador, Integer denominador, String operacao){
-        this.numerador = numerador;
-        this.denominador = denominador;
-        this.operador = operacao;
+    public Fraction(Integer numerador, Integer denominador, String operacao) throws CalculatorException{
+        this.setNumerador(numerador);
+        this.setDenominador(denominador);
+        this.setOperador(operacao);
     }
      
     /**
@@ -161,10 +160,17 @@ public class Fraction {
     /**
      * Define o denominador da fração
      * 
-     * @param denominador
+     * @param denominador  
+     * @throws util.CalculatorException  
      */
-    public void setDenominador(Integer denominador) {
+    public void setDenominador(Integer denominador) throws CalculatorException {
+        String errorMessage = "Ops! Apenas números inteiros maiores que zero são aceitos para o denominador.";
+        if ( denominador <= 0){
+            throw new CalculatorException(errorMessage);
+        }
+        
         this.denominador = denominador;
+        
     }
     
     /**
@@ -191,13 +197,10 @@ public class Fraction {
      * a sequência: Divisão, multiplicação, soma e subtração.
      * A medida que as partes que compoẽm o cálculo são solucionadas, a
      * expressão vai sendo reduzida até a obtenção do resultado final.
+     * 
+     * @throws util.CalculatorException
      */
-    protected void calculate(){
-        if( ! this.isValid() ) {
-            this.result = new Fraction(0, 1) ;
-            return ;
-        }
-        
+    protected void calculate() throws CalculatorException {
         /**
          * Se não há itens agregrados à esta fração, logo a fração é composta
          * por um único termo, ou seja, ela mesma
@@ -276,9 +279,10 @@ public class Fraction {
     * @param frac          Fração a ser somada
     * @param newOperator   Operador a ser atribuído à fração resultante do cálculo
     * 
-     * @return Fraction
+    * @return Fraction
+    * @throws util.CalculatorException
     */
-    public Fraction somar( Fraction frac , String newOperator ){
+    public Fraction somar( Fraction frac , String newOperator ) throws CalculatorException{
         int newDenominador = this.MMC(this.getDenominador(), frac.getDenominador());
         int num1 = newDenominador/this.getDenominador() * this.getNumerador();
         int num2 = newDenominador/frac.getDenominador() * frac.getNumerador();
@@ -294,8 +298,9 @@ public class Fraction {
     * @param newOperator    Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
+    * @throws util.CalculatorException
     */
-    public Fraction subtrair( Fraction frac, String newOperator ){
+    public Fraction subtrair( Fraction frac, String newOperator ) throws CalculatorException{
         int newDenominador = this.MMC(this.getDenominador(), frac.getDenominador());
         int num1 = newDenominador/this.getDenominador() * this.getNumerador();
         int num2 = newDenominador/frac.getDenominador() * frac.getNumerador();
@@ -312,8 +317,9 @@ public class Fraction {
     * @param newOperator    Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
+    * @throws util.CalculatorException
     */
-    public Fraction multiplicar( Fraction frac, String newOperator ){
+    public Fraction multiplicar( Fraction frac, String newOperator ) throws CalculatorException{
         int newNumerador = this.getNumerador() * frac.getNumerador();
         int newDenominador = this.getDenominador() * frac.getDenominador();
         return new Fraction(newNumerador, newDenominador, newOperator);
@@ -327,64 +333,24 @@ public class Fraction {
     * @param newOperator    Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
+    * @throws util.CalculatorException
     */
-    public Fraction dividir( Fraction frac, String newOperator ){
+    public Fraction dividir( Fraction frac, String newOperator ) throws CalculatorException {
         int newNumerador = this.getNumerador() * frac.getDenominador();
         int newDenominador = this.getDenominador() * frac.getNumerador();
         return new Fraction(newNumerador, newDenominador, newOperator);
     }
-    
-    /**
-     * Verifica se a fração, bem como as frações embutidas, são válidas
-     * Por ora, apenas validamos se o denominador é Zero(0)
-     * 
-     * @return Boolean
-     */
-    private Boolean isValid(){
-        if( this.valid != null ){
-            return this.valid;
-        }
         
-        // verifica a fração deste objeto
-        this.valid = true ;
-        String errorMessage = "Ops! Apenas números inteiros maiores que zero são aceitos para numerador e denominador.";
-        if ( this.getDenominador() == 0 || this.getNumerador()== 0 ){
-            this.warnings.add(errorMessage);
-            this.valid = false ;
-        }
-        
-        // verifica as demais frações que compõem o cálculo são válidas
-        if( this.valid && ! this.fracs.isEmpty() ) {
-            for (Fraction frac : fracs) {
-               if ( frac.getDenominador() == 0 || frac.getNumerador() == 0 ){
-                    this.warnings.add(errorMessage);
-                    this.valid = false ;
-                    break;
-                } 
-            }
-        }
-        
-        return this.valid ;
-    }
-    
-    /**
-     * Retorna os avisos disparados pela operação
-     * 
-     * @return ArrayList 
-     */
-    public ArrayList<String> getWarnings() {
-        return warnings;
-    }
-    
     /**
      * Retorna os Tipos de Frações
      * 
      * @return ArrayList
+     * @throws util.CalculatorException
      */
-    public ArrayList<String> getTypes(){
+    public ArrayList<String> getTypes() throws CalculatorException{
         Fraction rst = this.getResult();
         
-        if ( ! this.getWarnings().isEmpty() || ! rst.types.isEmpty() || rst.getNumerador().equals(0) ) {
+        if ( ! rst.types.isEmpty() || rst.getNumerador().equals(0) ) {
             return rst.types;
         }
         
@@ -487,8 +453,9 @@ public class Fraction {
      * Retorna a fração de resultado correspondente
      * 
      * @return Fraction
+     * @throws util.CalculatorException
      */
-    public Fraction getResult() {
+    public Fraction getResult() throws CalculatorException {
         if ( result == null && valid == null ) {
             this.calculate();
         }
@@ -503,14 +470,11 @@ public class Fraction {
      * é do tipo irredutível:
      * 
      * @return Fraction
+     * @throws util.CalculatorException
      */
-    public Fraction getSimplifiedResult() {
-        if ( result == null && valid == null ) {
+    public Fraction getSimplifiedResult() throws CalculatorException {
+        if ( result == null ) {
             this.calculate();
-        }
-        
-        if( ! this.isValid() ){
-            return this.result ;
         }
         
         // Se o resultado é zero, não há motivo para fazer as demais verificações
@@ -536,7 +500,7 @@ public class Fraction {
      * 
      * @return String
      */
-    public String getPrettyMathResult(){
+    public String getPrettyMathResult() throws Exception{
        if ( this.getResult().getDenominador().equals(1) ) {
            return this.getResult().getNumerador().toString();
        }
@@ -550,7 +514,7 @@ public class Fraction {
      * 
      * @return String
      */
-    public String getDecimalResult(){
+    public String getDecimalResult() throws Exception{
         return this.getRealResult().toString().replace(".", ",");
     }
     
@@ -559,11 +523,7 @@ public class Fraction {
      * 
      * @return Double
      */
-    public Double getRealResult() {
-         if( ! this.isValid() ){
-            return 0.0 ;
-        }
-         
+    public Double getRealResult() throws Exception {
         BigDecimal bigNumerador = new BigDecimal(this.getResult().getNumerador().toString());
         BigDecimal bigDivisor = new BigDecimal(this.getResult().getDenominador().toString());
         return bigNumerador.divide(bigDivisor, 16, RoundingMode.HALF_UP).doubleValue();

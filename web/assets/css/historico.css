@@ -267,5 +267,17 @@ article.historic div.dataTables_paginate a.paginate_button {
     width: 91px;
     height: 14px;
   }
+}
 
+article.historic .table img.icon {
+    width: 24px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+article.historic .table tr td input[type=text]{
+    width: 94%;
+    height: 20px;
+    padding: 2px 4px;
+    border: 1px solid lightgray;
 }

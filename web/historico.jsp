@@ -50,6 +50,7 @@
 							<th>Simplificação</th>
 							<th>Valor Decimal</th>
 							<th>Classificação</th>
+							<th>Criado em</th>
 							<th>Remover</th>
 						</tr>
 					</thead>
@@ -61,12 +62,35 @@
                                                         for (Historic hist : historico) {
                                                 %>
 						<tr>
-							<td>`<%= hist.getExpressao() %>`</td>
-							<td>`<%= hist.getResultado() %>`</td>
-							<td>`<%= hist.getSimplificado() %>`</td>
-							<td><%= hist.getDecimal().toPlainString() %></td>
-							<td><%= hist.getClassificacao() %></td>
-                                                        <td><a onclick="return confirm('Tem certeza que deseja excluir este item?')" href="historico?action=<%= Historico.ACTION_REMOVE %>&idx=<%= hist.getId() %>"><img src="assets/images/delete2.png"></a></td>
+							<td>
+                                                            <span class="preview">`<%= hist.getExpressao() %>`</span>
+                                                            <input type="hidden" name="historicoID" value="<%= hist.getId() %>">
+                                                            <input type="hidden" name="action" value="<%= Historico.ACTION_UPDATE %>">
+                                                            <input class="hide" type="text" name="expressao" value="<%= hist.getExpressao() %>" >
+                                                        </td>
+							<td>
+                                                            <span class="preview">`<%= hist.getResultado() %>`</span>
+                                                            <input class="hide" type="text" name="resultado" value="<%= hist.getResultado() %>" >
+                                                        </td>
+							<td>
+                                                            <span class="preview">`<%= hist.getSimplificado() %>`</span>
+                                                            <input class="hide" type="text" name="simplificado" value="<%= hist.getSimplificado() %>" >
+                                                        </td>
+							<td>
+                                                            <span class="preview"><%= hist.getDecimal().doubleValue() %></span>
+                                                            <input class="hide" type="text" name="valorDecimal" value="<%= hist.getDecimal().doubleValue() %>" >
+                                                        </td>
+							<td>
+                                                            <span class="preview"><%= hist.getClassificacao() %></span>
+                                                            <input class="hide" type="text" name="classificacao" value="<%= hist.getClassificacao() %>" >
+                                                        </td>
+							<td><%= hist.getDataCriacaoFormatada() %></td>
+                                                        <td>
+                                                            <img class="icon edit" alt="Editar registro" src="assets/images/editar.png">
+                                                            <a class="save hide" href="<%= request.getContextPath() %>/historico/alterar"><img class="icon" alt="Salvar alterações" src="assets/images/save.png"></a>
+                                                            <img class="icon cancel hide" alt="Cancelar alterações" src="assets/images/cancel.png">
+                                                            <a class="remove" onclick="return confirm('Tem certeza que deseja excluir este item?')" href="historico?action=<%= Historico.ACTION_DELETE %>&idx=<%= hist.getId() %>"><img alt="Remover" class="icon" src="assets/images/delete2.png"></a>
+                                                        </td>
 						</tr>
                                                 <%
                                                         }

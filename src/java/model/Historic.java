@@ -5,6 +5,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Histórico de fração
@@ -90,6 +91,11 @@ public final class Historic {
 
     public Date getDataCriacao() {
         return dataCriacao;
+    }
+    
+    public String getDataCriacaoFormatada() {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");
+        return format.format(dataCriacao);
     }
 
     public void setDataCriacao(Date dataCriacao) {

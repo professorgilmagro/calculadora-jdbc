@@ -7,11 +7,13 @@ package dao;
 import util.DataSourceMySQL;
 import model.Historic;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import static jdk.nashorn.internal.objects.NativeError.printStackTrace;
 
 /**
  * A referida classe implementa o padrão Data Access Object para um objeto do 
@@ -235,8 +237,11 @@ public class historicoDAO implements historicoIDAO{
                 historico.setSimplificado(rs.getString("simplificado"));
                 historico.setClassificacao(rs.getString("classificacao"));
                 historico.setDecimal(rs.getBigDecimal("valorDecimal"));
-                historico.setDataCriacao(rs.getDate("dataCriacao"));
-                historico.setDataModificacao(rs.getDate("dataModificacao"));
+                historico.setDataCriacao(new Date(rs.getTimestamp("dataCriacao").getTime()));
+                
+                if ( rs.getString("dataModificacao") != null && ! rs.getString("dataModificacao").isEmpty() ) {
+                    historico.setDataModificacao(new Date(rs.getTimestamp("dataModificacao").getTime()));
+                }
 
                 // Adicionando o objeto do tipo historico a lista de resultados
                 listHistoricos.add(historico);
