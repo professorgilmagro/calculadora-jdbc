@@ -1,0 +1,303 @@
+form.calculator {
+    position: relative;
+    display: block;
+    background-color: #1D1D1D ;
+    margin: 40px auto 15px auto;
+    clear: both;
+    border: none;
+    width: 80%;
+    padding: 4em 0em;
+}
+
+form.calculator input[type=number]{
+    border: none;
+    font-size: 2em;
+    width: 94.5%;
+    background: #fafafa;
+    text-align: center;
+}
+
+form.calculator input[type=number]:focus{
+    text-decoration: none;
+}
+
+form.calculator ul li{
+    width: 50%;
+}
+
+form.calculator ul li.numerador{
+    border-bottom: 2px solid gray
+}
+
+form.calculator ul li.result{
+    margin-top: 10px;
+    vertical-align: middle;
+    font-size: 2em;
+    color: #000;
+}
+
+form.calculator .btn-calculate{
+    height: 120px;
+    width: 120px;
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+    background: #333;
+    outline: none;
+}
+
+form.calculator .btn-calculate:hover{
+    background: #3a61af;
+    border: none;
+}
+
+img.icon-calc{
+    width: 25px;
+    position: relative;
+    top: 5px;
+    right: 2px;
+    overflow: hidden;
+}
+
+img.icon-calc{
+    width: 25px;
+    position: relative;
+    top: 5px;
+    right: 2px;
+}
+
+.success{
+    background-color: green !important;
+    color: #FFF;
+}
+
+#calc-reset{
+    cursor: pointer;
+}
+
+section.content{
+    min-height: 600px;
+}
+
+table.calc-board{
+    border-spacing: 0.5em;
+    border-collapse: separate;
+    margin: auto;
+    width: 90%;
+}
+
+table.calc-board caption{
+    font-size: 2em;
+    color: #FFF;
+    text-align: left;
+    margin-left: 0.5em;
+}
+
+table.calc-board td{
+    text-align: center;
+    font-size: 1.25em;
+    vertical-align: middle;
+    width: 25%;
+}
+
+table.calc-board td button {
+    cursor: pointer;
+    width: 100%;
+    background-color:#3F3F3F;
+    display:inline-block;
+    color:#fff;
+    font-size:2em;
+    height:2em;
+    text-decoration:none;
+    text-align:center;
+    vertical-align: middle;
+    border: 1px solid #3F3F3F;
+    outline: 0;
+    font-weight: normal;
+}
+
+table.calc-board td button:hover {
+    background:#0B8194;
+    border-color: #0B8194;
+} 
+
+form.calculator table.calc-board tr.visor td.content{
+    border-top: 4px solid #00A4A4;
+    background: #2E2E2E;
+    height: 2.8em;
+    color: #FFF;
+    font-size: 2.6em;
+    margin-bottom: .5em;
+    padding: .05em 0.5em;
+    overflow: hidden;
+    position: relative;
+    padding-top: 1em;
+}
+
+.icon-divide{
+    background: url("../images/divisor-branco.png") no-repeat center;
+    height: 24px;
+    width: 24px;
+    padding: .075em .125em;
+    display: inline-block;
+    padding-bottom: 0.3em;
+}
+
+table.calc-board caption a{
+     color: #FFF;
+     text-decoration: none;
+     margin-right: 1em;
+     font-size: 0.8em;
+}
+
+table.calc-board caption a.inative{
+    color: #C1C1C1;
+}
+
+table.calc-board tr.visor{
+    margin-bottom: 1em;
+}
+
+table.calc-board tr.visor div.tipo-fracao{
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    line-height: normal;
+    font-size: 0.5em;
+    color:chartreuse;
+}
+
+table.calc-board tr.visor ul.warnings{
+    position: absolute;
+    top: 10px;
+    right: 0.5em;
+    font-size: 0.3em;
+    display: table;
+    text-align: right;
+    width: 90%;
+    line-height: normal;
+    margin: 0;
+}
+table.calc-board tr.visor ul.warnings li{
+    color: #F7F300;
+    width: 100%;
+}
+
+form.calculator table.calc-board tr.visor #calc-screen{
+    font-size: 0.6em;
+    text-align: right;
+    width: 98%;
+    display: block;
+}
+
+form.calculator table.calc-board tr.visor #calc-screen span.mrow span.mn,
+form.calculator table.calc-board tr.visor #calc-screen span.mrow span.mo {
+    font-family: 'Open Sans Condensed',Arial,sans-serif !important;
+}
+
+button#btn-toogle-cursor mfrac{
+    font-size: 0.7em;
+    font-family: 'Open Sans Condensed',Arial,sans-serif;
+}
+
+button#btn-toogle-cursor .active{
+    color: #00A4A4 !important;
+}
+
+button#btn-toogle-cursor .active:after{
+    content: "|"
+}
+
+form.calculator table.calc-board tr.visor td.content div.cursor-frac{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 18px;
+    width: 75px;
+    display: table;
+    cursor: pointer;
+}
+
+form.calculator table.calc-board tr.visor td.content div.cursor-frac span{
+    display: block;
+    clear: both;
+    width: 100%;
+    text-align: center;
+}
+
+form.calculator table.calc-board tr.visor td.content div.cursor-frac span.line{
+    border-bottom: 1px solid #FFF;
+    width: 45%;
+    margin: auto;
+    height: 2px;
+}
+
+form.calculator table.calc-board tr.visor td.content div.cursor-frac span.active{
+    color: #F7F300;
+    background: url("../images/editv2.png") no-repeat 40px 3px;
+}
+
+form.calculator table.calc-board tr.visor.classification{
+    text-align: left;
+    font-size: 0.4em;
+    margin-left: 0;
+}
+
+form.calculator table.calc-board tr.visor.classification h4{
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1em;
+    border-bottom: 1px dotted lightsteelblue;
+    margin-bottom: 10px;
+    color: yellow;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding-bottom: 10px;
+    clear: both;
+}
+
+form.calculator table.calc-board tr.visor.classification ul{
+    display: initial;
+}
+
+form.calculator table.calc-board tr.visor.classification ul li{
+    text-align: left;
+    float: left;
+    margin-right: 10px;
+    display: table;
+    width: auto;
+    padding-bottom: 10px;
+}
+
+form.calculator table.calc-board tr.visor .details span.MathJax_Preview{
+     font-family: 'Open Sans Condensed',Arial,sans-serif !important;
+}
+
+form.calculator table.calc-board tr.visor .details span.math{
+    color: #00A4A4;
+    font-size: 0.9em;
+    padding-left: 5px;
+}
+
+form.calculator table.calc-board tr.visor .details{
+    font-size: 0.25em;
+    display: table;
+    position: absolute;
+    right: 0;
+    top:-15px;
+}
+
+form.calculator table.calc-board tr.visor .details ul li{
+    float: right;
+    display: table;
+    margin-left: 10px;
+    width: auto;
+    vertical-align: top;
+    line-height: 2em;
+    font-family: 'Open Sans Condensed',Arial,sans-serif;
+}

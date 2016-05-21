@@ -1,0 +1,246 @@
+h1 {
+    font-size: 1.8rem
+}
+h2 {
+    font-size: 1.5rem
+}
+p {
+    padding-right: 10%;
+    padding-left: 10%
+}
+
+.header h1 {
+    font-size: 1.5rem
+}
+.main-menu ul li {
+    font-size: 1.5rem
+}
+
+footer ul li {
+    padding: 15px
+}
+
+section{
+    padding: 0;
+}
+
+article header p{
+    font-size: 1.1em;
+}
+
+section.content-left,
+section.content-right{
+    float: none;
+    width: 99%;
+    margin: 10px auto;
+    display: table;
+}
+
+section.content-right {
+    float: none;
+    width: 100%;
+    background: #FDFDFD;
+    min-height: 650px;
+}
+
+section.content h1,
+section.content-left h2 {
+    text-align: center;
+}
+
+form.calculator ul li {
+    width: 80%;
+}
+
+header.main nav ul{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header.main nav ul li{
+    line-height: normal;
+    height: auto;
+    float: none;
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid darkgray;
+    padding: 0.5em 0;
+    margin: auto;
+}
+
+aside.history{
+    margin-top: 1em;
+}
+
+aside.history table{
+    width: 95%;
+    margin: auto;
+}
+
+form.calculator {
+    position: static;
+    display: table;
+    clear: both;
+    width: 90% !important;
+    margin: auto;
+}
+
+form.calculator .btn-calculate{
+    position: static;
+    display: block;
+    clear: both;
+    margin: auto;
+}
+
+img.logo{
+    width: 20%;
+}
+
+article.historic table {
+    font-size: 0.8em;
+}
+
+table.teclado td{
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+table.teclado td button {
+    cursor: pointer;
+    width: 3em;
+    height: 2em;
+}
+
+form.calculator h2{
+    padding-left: 0.5em;
+}
+
+form.calculator div.visor{
+    display: block;
+    width: 92%;
+    height: 2.5em;
+    line-height: 2.5em;
+    color: #FFF;
+    font-size: 2em;
+    padding: 0 .125em;
+}
+
+.icon-divide{
+    background: url("../images/divisor-branco.png") no-repeat center;
+    height: 24px;
+    width: 24px;
+    padding: .025em .125em;
+    display: inline-block;
+    padding-bottom: 0.125em;
+}
+
+form.calculator{padding: 0.15em;}
+table.teclado td button {height: inherit;}
+
+.dataTables_wrapper .dataTables_filter{display: table; float: right;}
+.dataTables_wrapper .dataTables_length {display: table;}
+article.historic table td{padding: 2px;}
+article.historic table caption{
+    text-align: center;
+    display: block;
+    margin-top: 90px;
+    clear: both;
+}
+
+article.historic table caption {
+    font-size: 1.8em;
+}
+
+form.calculator table.calc-board tr.visor #calc-screen{
+    font-size: 0.4em;
+}
+
+form.calculator table.calc-board{
+    border-spacing: 0;
+}
+
+table.calc-board{
+    width: 98%;
+}
+
+table.calc-board tr.keyboard{
+    margin-top: 10px;
+}
+
+table.calc-board td button{
+    font-size: 1em;
+    border-color: #000;
+    border-left: none;
+    border-top: none;
+}
+
+table.calc-board tbody tr.keyboard td{
+    border-top: 1px solid #000;
+}
+
+table.calc-board td:last-child button{
+    border-right: none;
+}
+
+table.calc-board td:last-child{
+   margin-right: 0;
+   border-spacing: 0;
+}
+
+table.calc-board td button img{
+    height: 40%;
+}
+
+form.calculator table.calc-board tr.visor td.content{
+    height: 1.8em;
+}
+
+form.calculator table.calc-board tr.visor td.content div.cursor-frac span{
+    font-size: 0.8em;
+}
+
+form.calculator table.calc-board tr.visor.classification .content{
+    padding-top: 0;
+}
+
+form.calculator table.calc-board tr.visor.classification ul{
+    margin-top: 4px; 
+}
+
+form.calculator table.calc-board tr.visor.classification h4 {
+    font-size: 0.8em;
+    margin-bottom: 8px;
+}
+
+form.calculator table.calc-board tr.visor.classification ul li {
+    font-size: 0.65em;
+    margin-right: 5px;
+    padding-bottom: 8px;
+    display: table;
+    width: auto;
+    padding-right: 0;
+}
+
+form.calculator table.calc-board tr.visor.classification ul li:last-child{
+    margin-right: 0;
+}
+
+form.calculator table.calc-board tr.visor td.content div.cursor-frac{
+    width: 56px;
+    left: 0;
+}
+
+form.calculator table.calc-board tr.visor .details {
+    margin-right: 12px;
+    top: -6px;
+}
+
+article.historic table tr:first-child th:last-child {
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius:3px;
+}
