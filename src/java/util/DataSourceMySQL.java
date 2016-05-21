@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * Classe de conexão com o banco de dados MySQL
  * 
- * @author Grupo GRA (Anne, Gilmar, Ricado Boreto e Ricardo Rodrigues) <aiec.br>
+ * @author Grupo GRA (Anne, Gilmar, Ricado Boreto e Rodrigo Fernandes) <aiec.br>
  */
 public class DataSourceMySQL {
 

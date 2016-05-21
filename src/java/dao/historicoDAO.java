@@ -13,13 +13,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-import static jdk.nashorn.internal.objects.NativeError.printStackTrace;
 
 /**
  * A referida classe implementa o padrão Data Access Object para um objeto do 
  tipo Historic para o banco de dados MySQL.
  * 
- * @author Grupo GRAR (Anne, Gilmar, Ricardo Boreto e Ricardo Rodrigues) <aiec.br>
+ * @author Grupo GRAR (Anne, Gilmar, Ricardo Boreto e Rodrigo Fernandes) <aiec.br>
  */
 public class historicoDAO implements historicoIDAO{
     

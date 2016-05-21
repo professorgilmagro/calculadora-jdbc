@@ -6,7 +6,7 @@ package util;
 /**
  * Classe para tratamento de exceções específicas da calculadora
  * 
- * @author Grupo GRA (Anne, Gilmar, Rodrigo Boreto e Ricardo Rodrigues) <aiec.br>
+ * @author Grupo GRA (Anne, Gilmar, Rodrigo Boreto e Rodrigo Fernandes) <aiec.br>
  */
 public class CalculatorException extends Exception{
     

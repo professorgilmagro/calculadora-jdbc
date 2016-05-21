@@ -80,6 +80,20 @@
 							</p>
 						</div>
 					</li>
+                                        <li>
+                                        <figure>
+                                            <img src="assets/images/rr.jpg">
+                                            <figcaption>Rodrigo Fernandes</figcaption>
+                                            </figure>
+                                            <div class="description" itemscope itemtype="http://schema.org/Organization">
+                                                    <h2 itemprop="occupation">Analista de Sistemas</h2>
+                                                    <p itemprop="tel">11 9999-9999</p>
+                                                    <p itemprop="address" itemscope itemtype="http://schema.org/address">
+                                                            <span itemprop="locality">Belo Horizonte</span>,
+                                                            <span itemprop="region">MG</span>.
+                                                    </p>
+                                            </div>
+                                    </li>
 				</ul>
 			</article>
 		</section>

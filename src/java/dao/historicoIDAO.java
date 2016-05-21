@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author Grupo GRAR (Anne, Gilmar, Ricardo Boreto e Ricardo Rodrigues) <aiec.br>
+ * @author Grupo GRAR (Anne, Gilmar, Ricardo Boreto e Rodrigo Fernandes) <aiec.br>
  */
 public interface historicoIDAO {
     /**

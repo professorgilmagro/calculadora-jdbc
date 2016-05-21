@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 /**
  * Histórico de fração
  * 
- * @author Grupo GRAR (Anne, Gilmar, Ricardo Boreto e Ricardo Rodrigues) <aiec.br>
+ * @author Grupo GRAR (Anne, Gilmar, Ricardo Boreto e Rodrigo Fernandes) <aiec.br>
  */
 public final class Historic {
     private int Id;
@@ -33,12 +33,16 @@ public final class Historic {
      * @param frac 
      */
     public Historic( Fraction frac ) {
-        BigDecimal bigDec = new BigDecimal(frac.getRealResult());
-        this.setExpressao(frac.getMathExpression());
-        this.setResultado(frac.getPrettyMathResult());
-        this.setDecimal(bigDec);
-        this.setSimplificado(frac.getSimplifiedResult().getPrettyMathResult());
-        this.setClassificacao(frac.getTypes().toString().replace("[", "").replace("]", ""));
+        BigDecimal bigDec;
+        try {
+            bigDec = new BigDecimal(frac.getRealResult());
+            this.setExpressao(frac.getMathExpression());
+            this.setResultado(frac.getPrettyMathResult());
+            this.setDecimal(bigDec);
+            this.setSimplificado(frac.getSimplifiedResult().getPrettyMathResult());
+            this.setClassificacao(frac.getTypes().toString().replace("[", "").replace("]", ""));
+        } catch (Exception ex) {
+        }
     }
     
     public int getId() {
