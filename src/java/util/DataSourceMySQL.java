@@ -25,10 +25,10 @@ public class DataSourceMySQL {
     // Senha do usuário de conexão do banco de dados
     private final String PASSWORD = "admin";
     
-    // URL de conexão com o banco de dados aiec
+    // URL de conexão com o banco de dados
     private final String URL = String.format("jdbc:mysql://%s/%s", SERVERNAME, DATABASE);
     
-    // FQDN da classe principal do driver JDBC para o Mysql
+    // FQDN da classe principal do driver JDBC para o MySQL
     private final String DRIVER = "com.mysql.jdbc.Driver";
 
     // Objeto de conexão com o banco de dados
