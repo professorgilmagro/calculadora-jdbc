@@ -6,7 +6,7 @@ package model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import util.CalculatorException;
+import util.FractionException;
 
 /**
  *
@@ -97,9 +97,9 @@ public final class Fraction {
      * @param numerador
      * @param denominador 
      * 
-     * @throws util.CalculatorException 
+     * @throws util.FractionException 
      */
-    public Fraction(Integer numerador, Integer denominador) throws CalculatorException{
+    public Fraction(Integer numerador, Integer denominador) throws FractionException{
         this.setNumerador(numerador);
         this.setDenominador(denominador);
     }
@@ -110,9 +110,9 @@ public final class Fraction {
      * @param numerador
      * @param denominador 
      * @param operacao 
-     * @throws util.CalculatorException 
+     * @throws util.FractionException 
      */
-    public Fraction(Integer numerador, Integer denominador, String operacao) throws CalculatorException{
+    public Fraction(Integer numerador, Integer denominador, String operacao) throws FractionException{
         this.setNumerador(numerador);
         this.setDenominador(denominador);
         this.setOperador(operacao);
@@ -161,16 +161,15 @@ public final class Fraction {
      * Define o denominador da fração
      * 
      * @param denominador  
-     * @throws util.CalculatorException  
+     * @throws util.FractionException  
      */
-    public void setDenominador(Integer denominador) throws CalculatorException {
+    public void setDenominador(Integer denominador) throws FractionException {
         String errorMessage = "Ops! Apenas números inteiros maiores que zero são aceitos para o denominador.";
-        if ( denominador <= 0){
-            throw new CalculatorException(errorMessage);
+        if ( denominador <= 0 ){
+            throw new FractionException(errorMessage);
         }
         
         this.denominador = denominador;
-        
     }
     
     /**
@@ -198,9 +197,9 @@ public final class Fraction {
      * A medida que as partes que compoẽm o cálculo são solucionadas, a
      * expressão vai sendo reduzida até a obtenção do resultado final.
      * 
-     * @throws util.CalculatorException
+     * @throws util.FractionException
      */
-    protected void calculate() throws CalculatorException {
+    protected void calculate() throws FractionException {
         /**
          * Se não há itens agregrados à esta fração, logo a fração é composta
          * por um único termo, ou seja, ela mesma
@@ -280,9 +279,9 @@ public final class Fraction {
     * @param newOperator   Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
-    * @throws util.CalculatorException
+    * @throws util.FractionException
     */
-    public Fraction somar( Fraction frac , String newOperator ) throws CalculatorException{
+    public Fraction somar( Fraction frac , String newOperator ) throws FractionException{
         int newDenominador = this.MMC(this.getDenominador(), frac.getDenominador());
         int num1 = newDenominador/this.getDenominador() * this.getNumerador();
         int num2 = newDenominador/frac.getDenominador() * frac.getNumerador();
@@ -298,9 +297,9 @@ public final class Fraction {
     * @param newOperator    Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
-    * @throws util.CalculatorException
+    * @throws util.FractionException
     */
-    public Fraction subtrair( Fraction frac, String newOperator ) throws CalculatorException{
+    public Fraction subtrair( Fraction frac, String newOperator ) throws FractionException{
         int newDenominador = this.MMC(this.getDenominador(), frac.getDenominador());
         int num1 = newDenominador/this.getDenominador() * this.getNumerador();
         int num2 = newDenominador/frac.getDenominador() * frac.getNumerador();
@@ -317,9 +316,9 @@ public final class Fraction {
     * @param newOperator    Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
-    * @throws util.CalculatorException
+    * @throws util.FractionException
     */
-    public Fraction multiplicar( Fraction frac, String newOperator ) throws CalculatorException{
+    public Fraction multiplicar( Fraction frac, String newOperator ) throws FractionException{
         int newNumerador = this.getNumerador() * frac.getNumerador();
         int newDenominador = this.getDenominador() * frac.getDenominador();
         return new Fraction(newNumerador, newDenominador, newOperator);
@@ -333,9 +332,9 @@ public final class Fraction {
     * @param newOperator    Operador a ser atribuído à fração resultante do cálculo
     * 
     * @return Fraction
-    * @throws util.CalculatorException
+    * @throws util.FractionException
     */
-    public Fraction dividir( Fraction frac, String newOperator ) throws CalculatorException {
+    public Fraction dividir( Fraction frac, String newOperator ) throws FractionException {
         int newNumerador = this.getNumerador() * frac.getDenominador();
         int newDenominador = this.getDenominador() * frac.getNumerador();
         return new Fraction(newNumerador, newDenominador, newOperator);
@@ -345,9 +344,9 @@ public final class Fraction {
      * Retorna os Tipos de Frações
      * 
      * @return ArrayList
-     * @throws util.CalculatorException
+     * @throws util.FractionException
      */
-    public ArrayList<String> getTypes() throws CalculatorException{
+    public ArrayList<String> getTypes() throws FractionException{
         Fraction rst = this.getResult();
         
         if ( ! rst.types.isEmpty() || rst.getNumerador().equals(0) ) {
@@ -453,9 +452,9 @@ public final class Fraction {
      * Retorna a fração de resultado correspondente
      * 
      * @return Fraction
-     * @throws util.CalculatorException
+     * @throws util.FractionException
      */
-    public Fraction getResult() throws CalculatorException {
+    public Fraction getResult() throws FractionException {
         if ( result == null && valid == null ) {
             this.calculate();
         }
@@ -470,9 +469,9 @@ public final class Fraction {
      * é do tipo irredutível:
      * 
      * @return Fraction
-     * @throws util.CalculatorException
+     * @throws util.FractionException
      */
-    public Fraction getSimplifiedResult() throws CalculatorException {
+    public Fraction getSimplifiedResult() throws FractionException {
         if ( result == null ) {
             this.calculate();
         }

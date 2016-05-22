@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Historic;
-import util.CalculatorException;
+import util.FractionException;
 
 /**
  * Página de controle da Calculadora
@@ -94,7 +94,7 @@ public class Calculadora extends HttpServlet {
             request.setAttribute("expressao", result.getMathExpression());
             request.setAttribute("avisos", null);
             request.setAttribute("tipos", result.getTypes());
-        }catch( CalculatorException ex ){
+        }catch( FractionException ex ){
             List<String> avisos = new ArrayList<String>();
             avisos.add(ex.getMessage());
             request.setAttribute("avisos", avisos);
@@ -112,7 +112,7 @@ public class Calculadora extends HttpServlet {
      * 
      * @return Fraction
      */
-    private Fraction _getResultFromMathTeX( String mathText , HttpServletResponse response  ) throws Exception, CalculatorException{
+    private Fraction _getResultFromMathTeX( String mathText , HttpServletResponse response  ) throws Exception, FractionException{
         String[] fracs = mathText.split("\\+|-|×|÷");
         List<String> operators = new ArrayList<String>();
         

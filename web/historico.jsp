@@ -51,7 +51,7 @@
 							<th>Valor Decimal</th>
 							<th>Classificação</th>
 							<th>Criado em</th>
-							<th>Remover</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>

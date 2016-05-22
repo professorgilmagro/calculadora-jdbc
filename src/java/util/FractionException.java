@@ -8,19 +8,19 @@ package util;
  * 
  * @author Grupo GRA (Anne, Gilmar, Rodrigo Boreto e Rodrigo Fernandes) <aiec.br>
  */
-public class CalculatorException extends Exception{
+public class FractionException extends Exception{
     
-    public CalculatorException() {}
+    public FractionException() {}
     
-    public CalculatorException(String message) {
+    public FractionException(String message) {
         super(message);
     }
     
-    public CalculatorException(Throwable cause) {
+    public FractionException(Throwable cause) {
         super(cause);
     }
 
-    public CalculatorException(String message, Throwable cause) {
+    public FractionException(String message, Throwable cause) {
         super(message, cause);
     }
 }

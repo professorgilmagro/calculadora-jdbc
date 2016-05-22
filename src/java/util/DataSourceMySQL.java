@@ -13,18 +13,23 @@ import java.sql.SQLException;
  * @author Grupo GRA (Anne, Gilmar, Ricado Boreto e Rodrigo Fernandes) <aiec.br>
  */
 public class DataSourceMySQL {
-
-    // FQDN da classe principal do driver JDBC para o Mysql
-    private final String DRIVER = "com.mysql.jdbc.Driver";
-
-    // URL de conexão com o banco de dados aiec
-    private final String URL = "jdbc:mysql://localhost:3306/calculadora";
+    // Caminho do servidor de banco de dados
+    private final String SERVERNAME = "localhost:3306";
+    
+    // Nome do banco de dados
+    private final String DATABASE = "calculadora";
 
     // Usuário de conexão do banco de dados
     private final String USER = "root";
 
     // Senha do usuário de conexão do banco de dados
     private final String PASSWORD = "admin";
+    
+    // URL de conexão com o banco de dados aiec
+    private final String URL = String.format("jdbc:mysql://%s/%s", SERVERNAME, DATABASE);
+    
+    // FQDN da classe principal do driver JDBC para o Mysql
+    private final String DRIVER = "com.mysql.jdbc.Driver";
 
     // Objeto de conexão com o banco de dados
     private Connection conexao;
