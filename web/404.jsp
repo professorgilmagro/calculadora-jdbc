@@ -5,6 +5,7 @@
         <title>Página não encontrada</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#333">
         <!-- Favicons Generated with favicon.il.ly -->
             <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="assets/images/favicons/favicon.ico"/>
             <!--[if IE]>

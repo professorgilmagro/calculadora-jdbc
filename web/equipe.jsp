@@ -6,6 +6,7 @@
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 		<meta name="description" content="Atividade da disciplina Programação Web (AIEC), cujo objetivo visa complementar os conhecimentos adquiridos pelos discentes no âmbito da disciplina pela abordagem dos conceitos estudados com o desenvolvimento de páginas estáticas em linguagem HTML." />
 		<meta name="keywords" content="calculadora,fracao,matematica,conta">
+                <meta name="theme-color" content="#333">
 		<!-- Favicons Generated with favicon.il.ly -->
                 <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="assets/images/favicons/favicon.ico"/>
                 <!--[if IE]>
